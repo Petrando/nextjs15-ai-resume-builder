@@ -1,7 +1,7 @@
 "use client";
 
 import logo from "@/assets/logo.png";
-//import ThemeToggle from "@/components/ThemeToggle";
+import ThemeToggle from "@/components/ThemeToggle";
 import { UserButton } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { CreditCard } from "lucide-react";
@@ -28,8 +28,7 @@ export default function Navbar() {
                 </span>
                 </Link>
                 <div className="flex items-center gap-3">
-                {/*<ThemeToggle />*/}
-                <p className="font-semibold">Toggle theme</p>
+                <ThemeToggle />
                 <UserButton
                     appearance={{
                         baseTheme: theme === "dark" ? dark : undefined,
