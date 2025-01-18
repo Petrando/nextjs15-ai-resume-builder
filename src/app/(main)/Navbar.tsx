@@ -35,8 +35,8 @@ export default function Navbar() {
                         baseTheme: theme === "dark" ? dark : undefined,
                         elements: {
                             avatarBox: {
-                            width: 35,
-                            height: 35,
+                                width: 35,
+                                height: 35,
                             },
                         },
                     }}
