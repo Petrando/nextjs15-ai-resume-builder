@@ -15,19 +15,18 @@ import {
   import { useEffect } from "react";
   import { useForm } from "react-hook-form";
   
-  export default function GeneralInfoForm(/*{
+  export default function GeneralInfoForm({
     resumeData,
     setResumeData,
-  }: EditorFormProps*/) {
+  }: EditorFormProps) {
     const form = useForm<GeneralInfoValues>({
       resolver: zodResolver(generalInfoSchema),
       defaultValues: {
-        title: /*resumeData.title || */"",
-        description: /*resumeData.description || */"",
+        title: resumeData.title || "",
+        description: resumeData.description || "",
       },
     });
-  
-    /*
+      
     useEffect(() => {
       const { unsubscribe } = form.watch(async (values) => {
         const isValid = await form.trigger();
@@ -35,8 +34,7 @@ import {
         setResumeData({ ...resumeData, ...values });
       });
       return unsubscribe;
-    }, [form, resumeData, setResumeData]);
-    */
+    }, [form, resumeData, setResumeData]);    
       
     return (
       <div className="mx-auto max-w-xl space-y-6">

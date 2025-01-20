@@ -15,20 +15,20 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 
-export default function PersonalInfoForm(/*{
+export default function PersonalInfoForm({
   resumeData,
   setResumeData,
-}: EditorFormProps*/) {
+}: EditorFormProps) {
     const form = useForm<PersonalInfoValues>({
         resolver: zodResolver(personalInfoSchema),
         defaultValues: {
-            firstName: /*resumeData.firstName || */"",
-            lastName: /*resumeData.lastName || */"",
-            jobTitle: /*resumeData.jobTitle || */"",
-            city: /*resumeData.city || */"",
-            country: /*resumeData.country || */"",
-            phone: /*resumeData.phone || */"",
-            email: /*resumeData.email || */"",
+            firstName: resumeData.firstName || "",
+            lastName: resumeData.lastName || "",
+            jobTitle: resumeData.jobTitle || "",
+            city: resumeData.city || "",
+            country: resumeData.country || "",
+            phone: resumeData.phone || "",
+            email: resumeData.email || "",
         },
     });
     
@@ -36,10 +36,10 @@ export default function PersonalInfoForm(/*{
         const { unsubscribe } = form.watch(async (values) => {
             const isValid = await form.trigger();
             if (!isValid) return;
-            //setResumeData({ ...resumeData, ...values });
+            setResumeData({ ...resumeData, ...values });
         });
         return unsubscribe;
-    }, [form/*, resumeData, setResumeData*/]);
+    }, [form, resumeData, setResumeData]);
     
     const photoInputRef = useRef<HTMLInputElement>(null);
 

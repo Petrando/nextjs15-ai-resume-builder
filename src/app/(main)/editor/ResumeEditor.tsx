@@ -33,14 +33,15 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
   const FormComponent = steps.find(
     (step) => step.key === currentStep,
   )?.component;
-/*
+
   const [resumeData, setResumeData] = useState<ResumeValues>(
-    resumeToEdit ? mapToResumeValues(resumeToEdit) : {},
+    //resumeToEdit ? mapToResumeValues(resumeToEdit) : {},
+    {}
   );
 
   const [showSmResumePreview, setShowSmResumePreview] = useState(false);
 
-  const { isSaving, hasUnsavedChanges } = useAutoSaveResume(resumeData);
+  /*const { isSaving, hasUnsavedChanges } = useAutoSaveResume(resumeData);
 
   useUnloadWarning(hasUnsavedChanges);
 
@@ -67,7 +68,10 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
           >            
             <Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />
             {FormComponent && (
-              <FormComponent />
+              <FormComponent 
+                resumeData={resumeData}
+                setResumeData={setResumeData}
+              />
             )}
           </div>
           <div className="grow md:border-r" />
