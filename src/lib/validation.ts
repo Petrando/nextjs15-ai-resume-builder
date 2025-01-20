@@ -34,7 +34,7 @@ export type PersonalInfoValues = z.infer<typeof personalInfoSchema>;
 
 export const resumeSchema = z.object({
     ...generalInfoSchema.shape,
-    //...personalInfoSchema.shape,
+    ...personalInfoSchema.shape,
     //...workExperienceSchema.shape,
     //...educationSchema.shape,
     //...skillsSchema.shape,

@@ -10,6 +10,7 @@ import { useState } from "react";
 //import Breadcrumbs from "./Breadcrumbs";
 import Footer from "./Footer";
 import GeneralInfoForm from "./forms/GeneralInfoForm";
+import PersonalInfoForm from "./forms/PersonalInfoForm";
 //import ResumePreviewSection from "./ResumePreviewSection";
 //import { steps } from "./steps";
 //import useAutoSaveResume from "./useAutoSaveResume";
@@ -61,7 +62,7 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
               //showSmResumePreview && "hidden",
             )}
           >
-            <GeneralInfoForm />
+            <PersonalInfoForm />
             {/*<Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />*/}
             {/*FormComponent && (
               <FormComponent
