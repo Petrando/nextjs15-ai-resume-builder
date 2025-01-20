@@ -4,15 +4,15 @@
 //import useUnloadWarning from "@/hooks/useUnloadWarning";
 //import { ResumeServerData } from "@/lib/types";
 import { cn, /*mapToResumeValues*/ } from "@/lib/utils";
-//import { ResumeValues } from "@/lib/validation";
+import { ResumeValues } from "@/lib/validation";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-//import Breadcrumbs from "./Breadcrumbs";
+import Breadcrumbs from "./BreadCrumbs";
 import Footer from "./Footer";
 import GeneralInfoForm from "./forms/GeneralInfoForm";
 import PersonalInfoForm from "./forms/PersonalInfoForm";
 //import ResumePreviewSection from "./ResumePreviewSection";
-//import { steps } from "./steps";
+import { steps } from "./steps";
 //import useAutoSaveResume from "./useAutoSaveResume";
 
 interface ResumeEditorProps {
@@ -21,6 +21,19 @@ interface ResumeEditorProps {
 
 export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
   const searchParams = useSearchParams();
+
+  const currentStep = searchParams.get("step") || steps[0].key;
+
+  console.log('currentStep : ', currentStep)
+  function setStep(key: string) {
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set("step", key);
+    window.history.pushState(null, "", `?${newSearchParams.toString()}`);
+  }
+
+  const FormComponent = steps.find(
+    (step) => step.key === currentStep,
+  )?.component;
 /*
   const [resumeData, setResumeData] = useState<ResumeValues>(
     resumeToEdit ? mapToResumeValues(resumeToEdit) : {},
@@ -32,18 +45,9 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
 
   useUnloadWarning(hasUnsavedChanges);
 
-  const currentStep = searchParams.get("step") || steps[0].key;
-
-  function setStep(key: string) {
-    const newSearchParams = new URLSearchParams(searchParams);
-    newSearchParams.set("step", key);
-    window.history.pushState(null, "", `?${newSearchParams.toString()}`);
-  }
-
   
-  const FormComponent = steps.find(
-    (step) => step.key === currentStep,
-  )?.component;*/
+
+  */
 
   return (
     <div className="flex grow flex-col">
@@ -61,15 +65,11 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
               "w-full space-y-6 overflow-y-auto p-3 md:block md:w-1/2",
               //showSmResumePreview && "hidden",
             )}
-          >
-            <PersonalInfoForm />
-            {/*<Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />*/}
-            {/*FormComponent && (
-              <FormComponent
-                resumeData={resumeData}
-                setResumeData={setResumeData}
-              />
-            )*/}
+          >            
+            <Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />
+            {FormComponent && (
+              <FormComponent />
+            )}
           </div>
           <div className="grow md:border-r" />
           {/*<ResumePreviewSection
