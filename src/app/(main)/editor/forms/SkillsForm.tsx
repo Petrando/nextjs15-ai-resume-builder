@@ -30,12 +30,12 @@ export default function SkillsForm({
             const isValid = await form.trigger();
             if (!isValid) return;
             setResumeData({
-            ...resumeData,
-            skills:
-                values.skills
-                ?.filter((skill) => skill !== undefined)
-                .map((skill) => skill.trim())
-                .filter((skill) => skill !== "") || [],
+                ...resumeData,
+                skills:
+                    values.skills
+                        ?.filter((skill) => skill !== undefined)
+                        .map((skill) => skill.trim())
+                        .filter((skill) => skill !== "") || [],
             });
         });
         return unsubscribe;
@@ -44,8 +44,8 @@ export default function SkillsForm({
     return (
         <div className="mx-auto max-w-xl space-y-6">
             <div className="space-y-1.5 text-center">
-            <h2 className="text-2xl font-semibold">Skills</h2>
-            <p className="text-sm text-muted-foreground">What are you good at?</p>
+                <h2 className="text-2xl font-semibold">Skills</h2>
+                <p className="text-sm text-muted-foreground">What are you good at?</p>
             </div>
             <Form {...form}>
                 <form className="space-y-3">
