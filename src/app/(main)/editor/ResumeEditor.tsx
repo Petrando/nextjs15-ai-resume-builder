@@ -11,7 +11,7 @@ import Breadcrumbs from "./BreadCrumbs";
 import Footer from "./Footer";
 import GeneralInfoForm from "./forms/GeneralInfoForm";
 import PersonalInfoForm from "./forms/PersonalInfoForm";
-//import ResumePreviewSection from "./ResumePreviewSection";
+import ResumePreviewSection from "./ResumePreviewSection";
 import { steps } from "./steps";
 //import useAutoSaveResume from "./useAutoSaveResume";
 
@@ -74,13 +74,12 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
               />
             )}
           </div>
-          <div className="grow md:border-r" />
-          <pre>{JSON.stringify(resumeData, null, 2)}</pre>
-          {/*<ResumePreviewSection
+          <div className="grow md:border-r" />          
+          <ResumePreviewSection
             resumeData={resumeData}
             setResumeData={setResumeData}
             className={cn(showSmResumePreview && "flex")}
-          />*/}
+          />
         </div>
       </main>
       <Footer
