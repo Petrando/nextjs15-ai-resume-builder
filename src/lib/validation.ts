@@ -52,11 +52,26 @@ export type WorkExperience = NonNullable<
     z.infer<typeof workExperienceSchema>["workExperiences"]
 >[number];
 
+export const educationSchema = z.object({
+    educations: z
+      .array(
+        z.object({
+          degree: optionalString,
+          school: optionalString,
+          startDate: optionalString,
+          endDate: optionalString,
+        }),
+      )
+      .optional(),
+  });
+  
+  export type EducationValues = z.infer<typeof educationSchema>;
+
 export const resumeSchema = z.object({
     ...generalInfoSchema.shape,
     ...personalInfoSchema.shape,
     ...workExperienceSchema.shape,
-    //...educationSchema.shape,
+    ...educationSchema.shape,
     //...skillsSchema.shape,
     //...summarySchema.shape,
     //colorHex: optionalString,
