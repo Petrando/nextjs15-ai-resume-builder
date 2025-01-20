@@ -23,8 +23,7 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
   const searchParams = useSearchParams();
 
   const currentStep = searchParams.get("step") || steps[0].key;
-
-  console.log('currentStep : ', currentStep)
+  
   function setStep(key: string) {
     const newSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set("step", key);
@@ -80,8 +79,8 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
         </div>
       </main>
       <Footer
-        currentStep={"one"}
-        setCurrentStep={()=>{}}
+        currentStep={currentStep}
+        setCurrentStep={setStep}
         showSmResumePreview={false}
         setShowSmResumePreview={()=>{}}
         isSaving={false}
