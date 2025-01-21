@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { ResumeValues } from "@/lib/validation";
 import { formatDate } from "date-fns";
 import { Badge } from "lucide-react";
+import { BorderStyles } from "@/app/(main)/editor/BorderStyleButton";
 
 interface ResumePreviewProps {
   resumeData: ResumeValues;
@@ -81,7 +82,15 @@ function PersonalInfoHeader({ resumeData }: ResumeSectionProps) {
           width={100}
           height={100}
           alt="Author photo"
-          className="aspect-square object-cover"          
+          className="aspect-square object-cover"
+          style={{
+            borderRadius:
+              borderStyle === BorderStyles.SQUARE
+                ? "0px"
+                : borderStyle === BorderStyles.CIRCLE
+                  ? "9999px"
+                  : "10%",
+          }}          
         />
       )}
       <div className="space-y-2.5">
@@ -270,7 +279,16 @@ function SkillsSection({ resumeData }: ResumeSectionProps) {
           {skills.map((skill, index) => (
               <Badge
                 key={index}
-                className="rounded-md bg-black text-white hover:bg-black"              
+                className="rounded-md bg-black text-white hover:bg-black"
+                style={{
+                  backgroundColor: colorHex,
+                  borderRadius:
+                    borderStyle === BorderStyles.SQUARE
+                        ? "0px"
+                        : borderStyle === BorderStyles.CIRCLE
+                        ? "9999px"
+                        : "8px",
+                }}              
               >
               {skill}
               </Badge>
