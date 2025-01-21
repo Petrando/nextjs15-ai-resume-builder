@@ -63,7 +63,7 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
           <div
             className={cn(
               "w-full space-y-6 overflow-y-auto p-3 md:block md:w-1/2",
-              //showSmResumePreview && "hidden",
+              showSmResumePreview && "hidden",
             )}
           >            
             <Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />
@@ -85,8 +85,8 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
       <Footer
         currentStep={currentStep}
         setCurrentStep={setStep}
-        showSmResumePreview={false}
-        setShowSmResumePreview={()=>{}}
+        showSmResumePreview={showSmResumePreview}
+        setShowSmResumePreview={setShowSmResumePreview}
         isSaving={false}
       />
     </div>
