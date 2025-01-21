@@ -24,19 +24,19 @@ export async function saveResume(values: ResumeValues) {
   }
 
   //const subscriptionLevel = await getUserSubscriptionLevel(userId);
-
+ /*
   if (!id) {
     const resumeCount = await prisma.resume.count({ where: { userId } });
 
-    /*
+   
     if (!canCreateResume(subscriptionLevel, resumeCount)) {
       throw new Error(
         "Maximum resume count reached for this subscription level",
       );
     }
-    */
+    
   }
-
+*/
   const existingResume = id
     ? await prisma.resume.findUnique({ where: { id, userId } })
     : null;
@@ -45,20 +45,20 @@ export async function saveResume(values: ResumeValues) {
     throw new Error("Resume not found");
   }
 
-  const hasCustomizations =
+  /*const hasCustomizations =
     (resumeValues.borderStyle &&
       resumeValues.borderStyle !== existingResume?.borderStyle) ||
     (resumeValues.colorHex &&
       resumeValues.colorHex !== existingResume?.colorHex);
 
-  /*
+  
   if (hasCustomizations && !canUseCustomizations(subscriptionLevel)) {
     throw new Error("Customizations not allowed for this subscription level");
   }
   */
 
   let newPhotoUrl: string | undefined | null = undefined;
-
+  
   if (photo instanceof File) {
     if (existingResume?.photoUrl) {
       await del(existingResume.photoUrl);
