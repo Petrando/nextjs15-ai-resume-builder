@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-//import useUnloadWarning from "@/hooks/useUnloadWarning";
+import useUnloadWarning from "@/hooks/useUnloadWarning";
 //import { ResumeServerData } from "@/lib/types";
 import { cn, /*mapToResumeValues*/ } from "@/lib/utils";
 import { ResumeValues } from "@/lib/validation";
@@ -13,7 +13,7 @@ import GeneralInfoForm from "./forms/GeneralInfoForm";
 import PersonalInfoForm from "./forms/PersonalInfoForm";
 import ResumePreviewSection from "./ResumePreviewSection";
 import { steps } from "./steps";
-//import useAutoSaveResume from "./useAutoSaveResume";
+import useAutoSaveResume from "./useAutoSaveResume";
 
 interface ResumeEditorProps {
   resumeToEdit: /*ResumeServerData |*/ null;
@@ -41,13 +41,9 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
 
   const [showSmResumePreview, setShowSmResumePreview] = useState(false);
 
-  /*const { isSaving, hasUnsavedChanges } = useAutoSaveResume(resumeData);
+  const { isSaving, hasUnsavedChanges } = useAutoSaveResume(resumeData);
 
   useUnloadWarning(hasUnsavedChanges);
-
-  
-
-  */
 
   return (
     <div className="flex grow flex-col">
@@ -87,7 +83,7 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
         setCurrentStep={setStep}
         showSmResumePreview={showSmResumePreview}
         setShowSmResumePreview={setShowSmResumePreview}
-        isSaving={false}
+        isSaving={isSaving}
       />
     </div>
   );
