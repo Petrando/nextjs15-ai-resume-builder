@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import useDebounce from "@/hooks/useDebounce";
-//import { fileReplacer } from "@/lib/utils";
+import { fileReplacer } from "@/lib/utils";
 import { ResumeValues } from "@/lib/validation";
 import { useSearchParams } from "next/navigation";
 import { resolve } from "path";
@@ -39,8 +39,7 @@ export default function useAutoSaveResume(resumeData: ResumeValues) {
 
         const updatedResume = await saveResume({
           ...newData,
-          ...(lastSavedData.photo?.toString() ===
-            newData.photo?.toString() && {
+          ...(lastSavedData.photo?.toString() === newData.photo?.toString() && {
             photo: undefined,
           }),
           id: resumeId,
@@ -84,8 +83,8 @@ export default function useAutoSaveResume(resumeData: ResumeValues) {
     }    
 
     const hasUnsavedChanges =
-      JSON.stringify(debouncedResumeData) !==
-        JSON.stringify(lastSavedData);
+      JSON.stringify(debouncedResumeData, fileReplacer) !==
+        JSON.stringify(lastSavedData, fileReplacer);
 
     if (hasUnsavedChanges && debouncedResumeData && !isSaving) {
       save();
