@@ -1,4 +1,4 @@
-//import PremiumModal from "@/components/premium/PremiumModal";
+import PremiumModal from "@/components/premium/PremiumModal";
 //import { getUserSubscriptionLevel } from "@/lib/subscription";
 import { auth } from "@clerk/nextjs/server";
 import Navbar from "./Navbar";
@@ -21,7 +21,7 @@ export default async function Layout({
         <div className="flex min-h-screen flex-col">
             <Navbar />
             {children}
-            {/*<PremiumModal />*/}
+            <PremiumModal />
         </div>
     );
 }
