@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-//import LoadingButton from "@/components/LoadingButton";
+import LoadingButton from "@/components/LoadingButton";
 import ResumePreview from "@/components/ResumePreview";
 import { Button } from "@/components/ui/button";
 import {
@@ -164,13 +164,13 @@ function DeleteConfirmationDialog({
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          {/*<LoadingButton
+          <LoadingButton
             variant="destructive"
             onClick={handleDelete}
             loading={isPending}
           >
             Delete
-          </LoadingButton>*/}
+          </LoadingButton>
           <Button variant="secondary" onClick={() => onOpenChange(false)}>
             Cancel
           </Button>

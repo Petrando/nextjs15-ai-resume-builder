@@ -15,7 +15,7 @@ export default async function Page(){
     if (!userId) {
         return null;
     }
-    const [resumes, totalCount, /*subscriptionLevel*/] = await Promise.all([
+    const [resumes, totalCount/*, subscriptionLevel*/] = await Promise.all([
         prisma.resume.findMany({
           where: {
             userId,
