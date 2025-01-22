@@ -16,6 +16,7 @@ interface ResumePreviewProps {
 
 export default function ResumePreview({
   resumeData,
+  contentRef,
   className,
 }: ResumePreviewProps) {
 
@@ -37,6 +38,7 @@ export default function ResumePreview({
           zoom: (1 / 794) * width,
         }}        
         id="resumePreviewContent"
+        ref={contentRef}
       >
         <PersonalInfoHeader resumeData={resumeData} />
         <SummarySection resumeData={resumeData} />
