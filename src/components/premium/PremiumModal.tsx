@@ -8,7 +8,7 @@ import { Check } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
-//import { createCheckoutSession } from "./actions";
+import { createCheckoutSession } from "./actions";
 
 const premiumFeatures = ["AI tools", "Up to 3 resumes"];
 const premiumPlusFeatures = ["Infinite resumes", "Design customizations"];
@@ -23,8 +23,8 @@ export default function PremiumModal() {
   async function handlePremiumClick(priceId: string) {
     try {
       setLoading(true);
-      //const redirectUrl = await createCheckoutSession(priceId);
-      //window.location.href = redirectUrl;
+      const redirectUrl = await createCheckoutSession(priceId);
+      window.location.href = redirectUrl;
     } catch (error) {
       console.error(error);
       toast({
@@ -64,9 +64,8 @@ export default function PremiumModal() {
               </ul>
               <Button
                 onClick={() =>
-                  handlePremiumClick(
-                    "priceId"
-                    //env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_MONTHLY,
+                  handlePremiumClick(                    
+                    process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_MONTHLY!
                   )
                 }
                 disabled={loading}
@@ -90,9 +89,8 @@ export default function PremiumModal() {
               <Button
                 variant="premium"
                 onClick={() =>
-                  handlePremiumClick(
-                    "priceId"
-                    //env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_PLUS_MONTHLY,
+                  handlePremiumClick(                    
+                    process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_PLUS_MONTHLY!
                   )
                 }
                 disabled={loading}
