@@ -3,7 +3,7 @@
 
 //import { env } from "@/env";
 import { useToast } from "@/hooks/use-toast";
-//import usePremiumModal from "@/hooks/usePremiumModal";
+import usePremiumModal from "@/hooks/usePremiumModal";
 import { Check } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../ui/button";
@@ -14,7 +14,7 @@ const premiumFeatures = ["AI tools", "Up to 3 resumes"];
 const premiumPlusFeatures = ["Infinite resumes", "Design customizations"];
 
 export default function PremiumModal() {
-  //const { open, setOpen } = usePremiumModal();
+  const { open, setOpen } = usePremiumModal();
 
   const { toast } = useToast();
 
@@ -38,10 +38,10 @@ export default function PremiumModal() {
 
   return (
     <Dialog
-      open={true}
+      open={open}
       onOpenChange={(open) => {
         if (!loading) {
-          //setOpen(open);
+          setOpen(open);
         }
       }}
     >
