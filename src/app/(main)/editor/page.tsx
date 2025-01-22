@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-//import prisma from "@/lib/prisma";
-//import { resumeDataInclude } from "@/lib/types";
+import prisma from "@/lib/prisma";
+import { resumeDataInclude } from "@/lib/types";
 import { auth } from "@clerk/nextjs/server";
 import { Metadata } from "next";
 import ResumeEditor from "./ResumeEditor";
@@ -21,14 +21,19 @@ export default async function Page({ searchParams }: PageProps) {
     if (!userId) {
         return null;
     }
-
-    /*
-    const resumeToEdit = resumeId
+    
+    const resumeToEdit = await prisma.resume.findMany({
+      where: { userId },
+      include: resumeDataInclude,
+    })/*resumeId
         ? await prisma.resume.findUnique({
             where: { id: resumeId, userId },
             include: resumeDataInclude,
         })
         : null;*/
 
+    console.log(userId)
+    console.log(resumeId)
+    console.log(resumeToEdit)
     return <ResumeEditor resumeToEdit={ null } />;
 }

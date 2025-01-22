@@ -2,21 +2,19 @@
 "use client";
 
 import useUnloadWarning from "@/hooks/useUnloadWarning";
-//import { ResumeServerData } from "@/lib/types";
-import { cn, /*mapToResumeValues*/ } from "@/lib/utils";
+import { ResumeServerData } from "@/lib/types";
+import { cn, mapToResumeValues } from "@/lib/utils";
 import { ResumeValues } from "@/lib/validation";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import Breadcrumbs from "./BreadCrumbs";
 import Footer from "./Footer";
-import GeneralInfoForm from "./forms/GeneralInfoForm";
-import PersonalInfoForm from "./forms/PersonalInfoForm";
 import ResumePreviewSection from "./ResumePreviewSection";
 import { steps } from "./steps";
 import useAutoSaveResume from "./useAutoSaveResume";
 
 interface ResumeEditorProps {
-  resumeToEdit: /*ResumeServerData |*/ null;
+  resumeToEdit: ResumeServerData | null;
 }
 
 export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
@@ -35,8 +33,7 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
   )?.component;
 
   const [resumeData, setResumeData] = useState<ResumeValues>(
-    //resumeToEdit ? mapToResumeValues(resumeToEdit) : {},
-    {}
+    resumeToEdit ? mapToResumeValues(resumeToEdit) : {},    
   );
 
   const [showSmResumePreview, setShowSmResumePreview] = useState(false);
