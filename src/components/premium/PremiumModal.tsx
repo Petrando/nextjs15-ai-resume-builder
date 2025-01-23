@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-//import { env } from "@/env";
+import { env } from "@/env";
 import { useToast } from "@/hooks/use-toast";
 import usePremiumModal from "@/hooks/usePremiumModal";
 import { Check } from "lucide-react";
@@ -23,8 +23,7 @@ export default function PremiumModal() {
   async function handlePremiumClick(priceId: string) {
     try {
       setLoading(true);
-      const redirectUrl = await createCheckoutSession(priceId);
-      console.log('redirectUrl : ', redirectUrl)
+      const redirectUrl = await createCheckoutSession(priceId);      
       window.location.href = redirectUrl;
     } catch (error) {
       console.error(error);
@@ -66,7 +65,7 @@ export default function PremiumModal() {
               <Button
                 onClick={() =>
                   handlePremiumClick(                    
-                    process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_MONTHLY!
+                    env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_MONTHLY!
                   )
                 }
                 disabled={loading}
@@ -91,7 +90,7 @@ export default function PremiumModal() {
                 variant="premium"
                 onClick={() =>
                   handlePremiumClick(                    
-                    process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_PLUS_MONTHLY!
+                    env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_PLUS_MONTHLY!
                   )
                 }
                 disabled={loading}
