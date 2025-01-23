@@ -4,11 +4,8 @@
 import stripe from "@/lib/stripe";
 import { currentUser } from "@clerk/nextjs/server";
 
-export async function createCheckoutSession(priceId: string) {
-    console.log(priceId)
-  const user = await currentUser();
-
-    console.log('user : ', user)
+export async function createCheckoutSession(priceId: string) {    
+  const user = await currentUser();    
 
   if (!user) {
     throw new Error("Unauthorized");
@@ -16,9 +13,7 @@ export async function createCheckoutSession(priceId: string) {
 
   const stripeCustomerId = user.privateMetadata.stripeCustomerId as
     | string
-    | undefined;
-
-    console.log(`stripeCustomerId : `, stripeCustomerId)
+    | undefined;    
 
   const session = await stripe.checkout.sessions.create({
     line_items: [{ price: priceId, quantity: 1 }],
@@ -46,13 +41,10 @@ export async function createCheckoutSession(priceId: string) {
       terms_of_service: "required",
     },
   });
-
-  console.log(session)
+  
   if (!session.url) {
     throw new Error("Failed to create checkout session");
   }
-
-  
 
   return session.url;
 }
