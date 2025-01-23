@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use server";
 
-import { canCreateResume, canUseCustomizations } from "@/lib/permissions";
+import { canCreateResume, canUseCustomizations } from "@/lib/permission";
 import prisma from "@/lib/prisma";
 import { getUserSubscriptionLevel } from "@/lib/subscription";
 import { resumeSchema, ResumeValues } from "@/lib/validation";

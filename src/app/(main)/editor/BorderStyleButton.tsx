@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import usePremiumModal from "@/hooks/usePremiumModal";
-import { canUseCustomizations } from "@/lib/permissions";
+import { canUseCustomizations } from "@/lib/permission";
 import { Circle, Square, Squircle } from "lucide-react";
 import { useSubscriptionLevel } from "../SubscriptionLevelProvider";
 

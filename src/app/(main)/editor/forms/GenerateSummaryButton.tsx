@@ -2,7 +2,7 @@
 import LoadingButton from "@/components/LoadingButton";
 import { useToast } from "@/hooks/use-toast";
 import usePremiumModal from "@/hooks/usePremiumModal";
-import { canUseAITools } from "@/lib/permissions";
+import { canUseAITools } from "@/lib/permission";
 import { ResumeValues } from "@/lib/validation";
 import { WandSparklesIcon } from "lucide-react";
 import { useState } from "react";

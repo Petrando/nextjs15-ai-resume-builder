@@ -5,7 +5,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import usePremiumModal from "@/hooks/usePremiumModal";
-import { canUseCustomizations } from "@/lib/permissions";
+import { canUseCustomizations } from "@/lib/permission";
 import { PaletteIcon } from "lucide-react";
 import { useState } from "react";
 import { Color, ColorChangeHandler, TwitterPicker } from "react-color";

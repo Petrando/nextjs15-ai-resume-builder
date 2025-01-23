@@ -19,7 +19,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import usePremiumModal from "@/hooks/usePremiumModal";
-import { canUseAITools } from "@/lib/permissions";
+import { canUseAITools } from "@/lib/permission";
 import {
   GenerateWorkExperienceInput,
   generateWorkExperienceSchema,
