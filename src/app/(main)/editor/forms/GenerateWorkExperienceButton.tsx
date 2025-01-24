@@ -112,9 +112,9 @@ function InputDialog({
         <DialogHeader>
           <DialogTitle>Generate work experience</DialogTitle>
           <DialogDescription>
-            <span className="italic">
+            <p className="italic">
               (Sorry, not connected to AI yet)
-            </span>
+            </p>
             Describe this work experience and the AI will generate an optimized
             entry for you.
           </DialogDescription>
