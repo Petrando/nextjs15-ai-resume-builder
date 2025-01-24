@@ -36,6 +36,9 @@ export default function GenerateSummaryButton({
             setLoading(true);
             //const aiResponse = await generateSummary(resumeData);
             onSummaryGenerated("AI not connected yet");
+            toast({
+                description: "Sorry, not connected to AI yet - stay tunned."
+            })
         } catch (error) {
         console.error(error);
             toast({
