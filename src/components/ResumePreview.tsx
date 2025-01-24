@@ -5,7 +5,7 @@ import useDimensions from "@/hooks/useDimensions";
 import { cn } from "@/lib/utils";
 import { ResumeValues } from "@/lib/validation";
 import { formatDate } from "date-fns";
-import { Badge } from "lucide-react";
+import { Badge } from "./ui/badge";
 import { BorderStyles } from "@/app/(main)/editor/BorderStyleButton";
 
 interface ResumePreviewProps {
@@ -280,7 +280,7 @@ function SkillsSection({ resumeData }: ResumeSectionProps) {
           </p>
           <div className="flex break-inside-avoid flex-wrap gap-2">
           {skills.map((skill, index) => (
-              <Badge
+              <Badge            
                 key={index}
                 className="rounded-md bg-black text-white hover:bg-black"
                 style={{
@@ -291,7 +291,7 @@ function SkillsSection({ resumeData }: ResumeSectionProps) {
                         : borderStyle === BorderStyles.CIRCLE
                         ? "9999px"
                         : "8px",
-                }}              
+                }}
               >
               {skill}
               </Badge>
