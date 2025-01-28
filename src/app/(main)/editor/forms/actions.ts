@@ -140,9 +140,7 @@ export async function generateWorkExperience(
 
   if (!aiResponse) {
     throw new Error("Failed to generate AI response");
-  }
-
-  console.log("aiResponse", aiResponse);
+  }  
 
   return {
     position: aiResponse.match(/Job title: (.*)/)?.[1] || "",

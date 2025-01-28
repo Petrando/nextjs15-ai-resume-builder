@@ -178,7 +178,8 @@ function WorkExperienceItem({id, index, form, remove}:WorkExperienceItemProps) {
             <div className="flex justify-center">
                 <GenerateWorkExperienceButton
                     onWorkExperienceGenerated={(exp) =>
-                        form.setValue(`workExperiences.${index}`, exp)
+                        console.log(exp)
+                        //form.setValue(`workExperiences.${index}`, exp)
                     }
                 />
             </div>

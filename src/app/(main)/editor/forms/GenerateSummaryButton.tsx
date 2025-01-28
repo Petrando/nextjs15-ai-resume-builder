@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import LoadingButton from "@/components/LoadingButton";
 import { useToast } from "@/hooks/use-toast";
@@ -7,7 +8,7 @@ import { ResumeValues } from "@/lib/validation";
 import { WandSparklesIcon } from "lucide-react";
 import { useState } from "react";
 import { useSubscriptionLevel } from "../../SubscriptionLevelProvider";
-//import { generateSummary } from "./actions";
+import { generateSummary } from "./actions";
 
 interface GenerateSummaryButtonProps {
   resumeData: ResumeValues;
@@ -34,17 +35,25 @@ export default function GenerateSummaryButton({
 
         try {
             setLoading(true);
-            //const aiResponse = await generateSummary(resumeData);
-            onSummaryGenerated("AI not connected yet");
-            toast({
-                description: "Sorry, not connected to AI yet - stay tunned."
-            })
+            const aiResponse = await generateSummary(resumeData);
+            onSummaryGenerated(aiResponse);            
         } catch (error) {
-        console.error(error);
-            toast({
-                variant: "destructive",
-                description: "Something went wrong. Please try again.",
-            });
+            if(error instanceof Error){
+                const { message } = error
+                console.log(message.includes('You exceeded your current quota'))
+                if(message.includes('You exceeded your current quota')){
+                    toast({
+                        variant: "destructive",
+                        description: "Sorry, AI text generation exceeds allowed quota, cannot generate for now.",
+                    });
+                }
+            }else{
+                toast({
+                    variant: "destructive",
+                    description: "Something went wrong. Please try again.",
+                });
+            }                        
+            
         } finally {
             setLoading(false);
         }

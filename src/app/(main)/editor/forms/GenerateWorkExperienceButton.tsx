@@ -30,7 +30,7 @@ import { WandSparklesIcon } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSubscriptionLevel } from "../../SubscriptionLevelProvider";
-//import { generateWorkExperience } from "./actions";
+import { generateWorkExperience } from "./actions";
 
 interface GenerateWorkExperienceButtonProps {
   onWorkExperienceGenerated: (workExperience: WorkExperience) => void;
@@ -95,14 +95,24 @@ function InputDialog({
 
   async function onSubmit(input: GenerateWorkExperienceInput) {
     try {
-      //const response = await generateWorkExperience(input);
-      //onWorkExperienceGenerated(response);
+      const response = await generateWorkExperience(input);
+      onWorkExperienceGenerated(response);
     } catch (error) {
       console.error(error);
+      if(error instanceof Error){
+        const { message } = error
+        if(message.includes('You exceeded your current quota')){
+            toast({
+                variant: "destructive",
+                description: "Sorry, AI text generation exceeds allowed quota, cannot generate for now.",
+            });
+        }
+    }else{
       toast({
         variant: "destructive",
         description: "Something went wrong. Please try again.",
       });
+    }      
     }
   }
 
@@ -112,9 +122,6 @@ function InputDialog({
         <DialogHeader>
           <DialogTitle>Generate work experience</DialogTitle>
           <DialogDescription>
-            <p className="italic">
-              (Sorry, not connected to AI yet)
-            </p>
             Describe this work experience and the AI will generate an optimized
             entry for you.
           </DialogDescription>
